@@ -1,7 +1,5 @@
 "use client"; //because we are using react-hooks and react-query.
 
-import { useState } from "react"; //for editableTransaction.
-
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 
 import { Card } from "@/components/ui/card"; //this entire component is rendered inside a card.
@@ -104,7 +102,7 @@ export default function TransactionList({
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.map((tx: any) => (
+          {data.map((tx: Transaction) => (
             <TableRow key={tx._id}>
               <TableCell>💲{tx.amount}</TableCell>
               <TableCell>{new Date(tx.date).toLocaleDateString()}</TableCell>

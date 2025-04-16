@@ -15,6 +15,7 @@ if (!uri) {
 
 //declare a global variable for 'dev mode' to avoid reconnecting on every refresh.
 declare global {
+  //eslint-disable-next-line no-var
   var _mongoClientPromise: Promise<MongoClient>;
 }
 
