@@ -40,14 +40,14 @@ export async function DELETE(
 //PUT - update a transaction.
 export async function PUT(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
   try {
     const client = await clientPromise;
     const db = client.db("finance-cluster");
     const collection = db.collection("transaction");
 
-    const { id } = await params;
+    const { id } = await context.params;
     const body = await req.json();
 
     const updated = await collection.updateOne(
