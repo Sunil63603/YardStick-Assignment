@@ -5,6 +5,7 @@ import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 
 import TransactionForm from "@/components/TransactionForm";
 import TransactionList from "@/components/TransactionList";
+import MonthlyChart from "@/components/MonthlyChart";
 
 //TS imports
 type Transaction = {
@@ -23,10 +24,11 @@ export default function Home() {
   return (
     <main className="max-w-xl mx-auto p-4">
       <h1 className="text-2xl font-bold mb-6">Personal Finance Visualizer</h1>
+      <MonthlyChart></MonthlyChart>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <button
-            className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-2 rounded-xl shadow-md hover:shadow-lg hover:from-blue-600 hover:to-indigo-600 transition-all duration-300"
+            className="mt-4 bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-2 rounded-xl shadow-md hover:shadow-lg hover:from-blue-600 hover:to-indigo-600 transition-all duration-300"
             onClick={() => setOpen(true)}
           >
             ➕ Add Transaction

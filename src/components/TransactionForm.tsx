@@ -85,6 +85,7 @@ export default function TransactionForm({
   };
 
   const editTransaction = async ({ _id, ...updatedData }: { _id: string }) => {
+    console.log(_id, updatedData);
     const res = await fetch(`/api/transactions/${_id}`, {
       method: "PUT",
       headers: {
@@ -128,6 +129,7 @@ export default function TransactionForm({
         ...data,
         _id: editableTx._id, //Pass ID for backend
       });
+      console.log(editableTx._id);
     } //ADD mode
     else {
       addMutation.mutate(data); //Pass form data directly to the mutation
@@ -149,7 +151,7 @@ export default function TransactionForm({
         placeholder="Amount"
         {...register("amount", { required: true, valueAsNumber: true })}
       ></Input>
-      {errors.amount && <p>Amount is required</p>}
+      {errors.amount && <p className="text-red-500">Amount is required</p>}
       {/*if errors.amount is true , then display this text below input box*/}
 
       {/* here register is used to make 'date' input compulsory. */}
@@ -158,7 +160,7 @@ export default function TransactionForm({
         type="date"
         {...register("date", { required: true })}
       ></Input>
-      {errors.date && <p>Date is required</p>}
+      {errors.date && <p className="text-red-500">Date is required</p>}
       {/*if errors.date is true,then display this text below date box */}
 
       {/* here register is used to make 'desc' input complusory */}
@@ -166,7 +168,9 @@ export default function TransactionForm({
         placeholder="Description"
         {...register("description", { required: true })}
       ></Input>
-      {errors.description && <p>Description is required</p>}
+      {errors.description && (
+        <p className="text-red-500">Description is required</p>
+      )}
       {/*if errors.desc is true,then display this text below description box*/}
 
       <Button
